@@ -1,1 +1,1 @@
-# Anomaly-Detection-for-Condition-Monitoring
+# Anomaly Detection for Condition Monitoring
