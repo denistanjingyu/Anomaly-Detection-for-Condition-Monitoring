@@ -63,7 +63,7 @@ def min_zero_repeat(night_shift_list, n_repeats_choice):
 
     # Use repeat() method to repeat "0" by the randomly selected number
     night_shift_list = np.repeat(night_shift_list, n_times_repeat)
-    night_shift_list = night_shift_list[0:4464]
+    night_shift_list = night_shift_list[:4464]
 
     return night_shift_list
 
@@ -120,7 +120,7 @@ def main():
         exec(f'day_shift_{i} = shift_value_generator(day_shift_values_{i}, day_shift_values_distribution_1)')
     for i in range(4, 11):
         exec(f'day_shift_{i} = shift_value_generator(day_shift_values_{i}, day_shift_values_distribution_2)')
-        
+
     # Generate list of night shift values
     night_shift_values = [0, 30, 33, 35, 38, 40, 43, 45, 48]
     night_shift_values_distribution = [5, 9, 9, 16, 16, 16, 16, 8, 5]
