@@ -21,9 +21,7 @@ def get_excel_data(file_path):
         A DataFrame containing the information from the Excel file.
 
     """
-    data = pd.read_excel(file_path)
-
-    return data
+    return pd.read_excel(file_path)
 
 
 def create_model(n_estimators, max_samples, contamination, max_features,
@@ -62,16 +60,16 @@ def create_model(n_estimators, max_samples, contamination, max_features,
         feature and then randomly selecting a split value between the maximum
         and minimum values of the selected feature.
     """
-    model = IsolationForest(n_estimators = n_estimators,
-                            max_samples = max_samples,
-                            contamination = contamination,
-                            max_features = max_features,
-                            bootstrap = bootstrap,
-                            n_jobs = n_jobs,
-                            random_state = random_state,
-                            verbose = verbose)
-
-    return model
+    return IsolationForest(
+        n_estimators=n_estimators,
+        max_samples=max_samples,
+        contamination=contamination,
+        max_features=max_features,
+        bootstrap=bootstrap,
+        n_jobs=n_jobs,
+        random_state=random_state,
+        verbose=verbose,
+    )
 
 
 def main():
@@ -82,23 +80,29 @@ def main():
         exec(f'df_{i} = get_excel_data(file_path_{i})')
 
     # Create machine learning model for anomaly detection
-    isolation_forest_1 = create_model(n_estimators = 100,
-                                      max_samples = 'auto',
-                                      contamination = float(0.05),
-                                      max_features = 1.0,
-                                      bootstrap = False,
-                                      n_jobs = -1,
-                                      random_state = 42,
-                                      verbose = 0)
+    isolation_forest_1 = create_model(
+        n_estimators=100,
+        max_samples='auto',
+        contamination=0.05,
+        max_features=1.0,
+        bootstrap=False,
+        n_jobs=-1,
+        random_state=42,
+        verbose=0,
+    )
 
-    isolation_forest_2 = create_model(n_estimators = 100,
-                                      max_samples = 'auto',
-                                      contamination = float(0.02),
-                                      max_features = 1.0,
-                                      bootstrap = False,
-                                      n_jobs = -1,
-                                      random_state = 42,
-                                      verbose = 0)
+
+    isolation_forest_2 = create_model(
+        n_estimators=100,
+        max_samples='auto',
+        contamination=0.02,
+        max_features=1.0,
+        bootstrap=False,
+        n_jobs=-1,
+        random_state=42,
+        verbose=0,
+    )
+
 
     for i in range(1, 4):
         # Train the models using the data given

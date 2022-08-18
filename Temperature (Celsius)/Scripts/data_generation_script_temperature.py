@@ -63,7 +63,7 @@ def min_num_repeat(night_shift_list, n_repeats_choice):
 
     # Use repeat() method to repeat "26" by the randomly selected number
     night_shift_list = np.repeat(night_shift_list, n_times_repeat)
-    night_shift_list = night_shift_list[0:4464]
+    night_shift_list = night_shift_list[:4464]
 
     return night_shift_list
 
